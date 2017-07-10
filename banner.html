@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Gillete banner</title>
+	<script src="dependencies/TweenMax.min.js"></script>
+	<style>
+		html, body {
+			margin:0;
+			overflow: hidden;
+		}
+
+		.banner {
+			width: 300px;
+			height: 250px;
+			background: blue;
+		}
+
+		.logo {
+	    z-index: 100;
+    	position: absolute;
+		}
+
+		.top {
+			position: absolute;
+			top: 0;
+		}
+
+		.middle {
+			position: absolute;
+    	top: 0;
+		}
+
+		.bottom{
+	    position: absolute;
+    	top: 0;
+		}
+
+		.message {
+      position: absolute;
+	    top: 225px;
+	    z-index: 150;
+		}
+
+		.ice-top {
+	    position: absolute;
+    	top: 0;
+		}
+
+		.ice-1 {
+			position: absolute;
+    	top: -1px;
+		}
+
+		.ice-2 {
+	    position: absolute;
+	    top: 0px;
+	    z-index: 2;
+		}
+
+		.ice-3 {
+	    position: absolute;
+      top: -25px;
+  		z-index: 80;
+		}
+
+		#razor {
+			position: absolute;
+			z-index: 120;
+			left: 300px;
+			top: -350px;
+			left: -300px;
+		}
+
+		#end-razor {
+      position: absolute;
+	    z-index: 160;
+	    top: 114px;
+	    left: -100px;
+	  }
+	</style>
+</head>
+
+<body>
+	<div class="banner">
+		<div class="logo">
+			<img src="dependencies/logo.png"/>
+		</div>
+		<div class="top">
+			<img src="dependencies/girlTop.png"/>
+		</div>
+		<div class="middle">
+			<img src="dependencies/girlStrip.png"/>
+		</div>
+		<div class="bottom">
+			<img src="dependencies/girlBottom.png"/>
+		</div>
+		<div class="message">
+			<img src="dependencies/cta.png"/>
+		</div>
+		<div class="ice-top">
+			<img src="dependencies/iceTop.png"/>
+		</div>
+		<div class="ice-1">
+			<img src="dependencies/ice1.png"/>
+		</div>
+		<div class="ice-2">
+			<img src="dependencies/ice2.png"/>
+		</div>	
+		<div class="ice-3">
+			<img src="dependencies/ice3.png"/>
+		</div>
+		<div id="razor">
+			<img src="dependencies/razor.png"/>
+		</div>
+		<div id="end-razor">
+			<img src="dependencies/razorEnding.png"/>
+		</div>
+	</div>
+</body>
+
+<script>
+	var razor = document.getElementById("razor");
+	var tl = new TimelineLite();
+	tl.fromTo(razor, 0.7, {left: '-700px'}, {left: '300px', top: '-160px', rotation:'-90deg_ccw', ease: Power0.easeNone});
+	tl.to(razor, 0.3, {left: '300px', top: '-500px', rotation:'-180deg_ccw', ease: Power0.easeNone});
+	tl.to(".ice-1", 1, {opacity:0}, "-=0.3");
+	tl.fromTo(razor, 1, {rotation:'50deg_ccw', left: '10px', top: '-40px'}, {left: '-300px', top: '-350px', rotation:'180deg_cw'});
+	tl.to(".ice-2", 1, {opacity:0},"-=0.8");
+	tl.to(razor, 0.1, {left: '-800px',  top: '-260px',rotation:'-30deg_cw'});
+	tl.to(razor, 0.7, {left: '300px', top: '-260px', rotation:'-90deg_ccw'});
+	tl.to(razor, 0.5, {left: '300px', top: '-600px', rotation:'-180deg_ccw'});
+	tl.to(".ice-top", 1, {opacity:0},"-=0.8");
+	tl.fromTo(razor, 0.7, {left: '1000px', top: '-100px', rotation:'60deg_cw'}, {left: '-250px', top: '-100px', rotation:'90deg_cw', ease: Power0.easeNone});
+	tl.to(razor, 0.3, { left: '-500px', top: '-200px', rotation:'130deg_cw', ease: Power0.easeNone});
+	tl.to(".ice-3", 1, {opacity:0},"-=0.8");
+	tl.to("#end-razor", 1.5, {left: 10, ease: Back.easeOut.config(2), onComplete: restart});
+
+	function restart() {
+		setTimeout( function() {
+			tl.restart();
+		}, 1000);
+	}
+</script>
